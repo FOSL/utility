@@ -1,0 +1,6 @@
+image:
+    - Visual Studio 2017
+clone_folder: c:\project\source
+build_script:
+- cmd: >-
+        make
