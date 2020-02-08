@@ -10,4 +10,5 @@ addons:
             - g++
 
 script:
+    - cd example
     - make
