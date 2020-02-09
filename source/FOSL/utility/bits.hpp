@@ -10,32 +10,30 @@
 #define IS_SET(  value, index) (  value & BIT(index) )
 #define IS_CLEAR(value, index) (!(value & BIT(index)))
 
-#define BIN =  2,
-#define OCT =  8,
-#define DEC = 10,
-#define HEX = 16,
-
 namespace FOSL
 {
 	namespace utility
 	{
-		namespace bits
-		{
-			inline bool const ON  = true;
-			inline bool const OFF = false;
+		// template <typename index_t>
+		// constexpr auto BIT(index_t index) { return 1 << index; }
 
-			inline bool const ENABLE  = true;
-			inline bool const DISABLE = false;
+		template <typename ...index_ts>
+		constexpr auto BITS(index_ts... index) { return bitor_all(BIT(index)...); }
 
-			inline bool const OK     = true;
-			inline bool const FAILED = false;
+		constexpr bool ON  = true;
+		constexpr bool OFF = false;
 
-			inline bool const HIGH = true;
-			inline bool const LOW  = false;
+		constexpr bool ENABLE  = true;
+		constexpr bool DISABLE = false;
 
-			inline bool const ACK  = true;
-			inline bool const NACK = false;
-		}
+		constexpr bool OK     = true;
+		constexpr bool FAILED = false;
+
+		constexpr bool HIGH = true;
+		constexpr bool LOW  = false;
+
+		constexpr bool ACK  = true;
+		constexpr bool NACK = false;
 	}
 }
 

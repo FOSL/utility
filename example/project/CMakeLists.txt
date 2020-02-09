@@ -1,1 +1,2 @@
 add_subdirectory(assert)
+add_subdirectory(metaprogramming)

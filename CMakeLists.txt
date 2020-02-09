@@ -13,6 +13,7 @@ add_library(
 	${PROJECT_SOURCE_DIR}/FOSL/utility/bits.hpp
 	${PROJECT_SOURCE_DIR}/FOSL/utility/math.hpp
 	${PROJECT_SOURCE_DIR}/FOSL/utility/types.h
+	${PROJECT_SOURCE_DIR}/FOSL/utility/metaprogramming.hpp
 )
 
 target_include_directories(

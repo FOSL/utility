@@ -13,6 +13,7 @@
 
 #include "FOSL/utility/types.h"
 #include "FOSL/utility/assert.h"
+#include "FOSL/utility/metaprogramming.hpp"
 #include "FOSL/utility/bits.hpp"
 #include "FOSL/utility/math.hpp"
 
@@ -20,6 +21,10 @@ namespace FOSL
 {
 	namespace utility
 	{
+		constexpr u8 BIN =  2;
+		constexpr u8 OCT =  8;
+		constexpr u8 DEC = 10;
+		constexpr u8 HEX = 16;
 	}
 }
 
