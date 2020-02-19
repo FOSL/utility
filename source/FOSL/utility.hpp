@@ -1,12 +1,17 @@
 #ifndef _FOSL_UTILITY_HPP_
 #define _FOSL_UTILITY_HPP_
 
+#ifdef _WIN32
+#	include <windows.h>
+#elif defined __unix__
+#	include <unistd.h>
+#endif
+
 #include <stdint.h>
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
-#include <sys/unistd.h>
 #include <errno.h>
 #include <string.h>
 #include <inttypes.h>
