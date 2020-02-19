@@ -11,6 +11,8 @@ addons:
 
 script:
     - cd example
+    - mkdir build
+    - cd build
     - CXX=/usr/bin/g++-8 CC=/usr/bin/gcc-8
-    - cmake $(python ./script/cmake_release_flags.py) .
+    - cmake $(python ./script/cmake_release_flags.py) ..
     - cmake --build . -- -j2
