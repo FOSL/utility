@@ -3,4 +3,6 @@ image:
 clone_folder: c:\project\source
 build_script:
 - cmd: >-
+        cd example
+
         make

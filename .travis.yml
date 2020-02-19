@@ -7,8 +7,9 @@ addons:
         sources:
             - ubuntu-toolchain-r-test
         packages:
-            - g++
+            - g++-8
 
 script:
     - cd example
-    - make
+    - cmake $(python ./script/cmake_release_flags.py) .
+    - cmake --build . -- -j2
