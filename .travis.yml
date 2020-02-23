@@ -14,7 +14,7 @@ script:
     - mkdir build
     - cd build
     - CXX=/usr/bin/g++-8 CC=/usr/bin/gcc-8
-    - cmake $(python ./script/cmake_release_flags.py) ..
-    - cmake --build . -D ENABLE_COVERAGE:BOOL=TRUE -- -j2
+    - cmake $(python ./../script/cmake_release_flags.py) ..
+    - cmake --build . -DENABLE_COVERAGE=TRUE -- -j2
     - ctest -j2
     - bash <(curl -s https://codecov.io/bash)
