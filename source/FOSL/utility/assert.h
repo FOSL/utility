@@ -13,7 +13,9 @@ inline void assert_failed(char const*expression, char const*file, int line)
 	fprintf(stderr, "\033[0;91;1m"); // RESET;FG_BRIGHT_RED;BOLD
 	fprintf(stderr, "%s:%d: ASSERTION `%s' FAILED! ☠ \n", file, line, expression);
 
-	while (true) {}
+	#ifdef HALT_ON_ASSERT_FAILED
+		while (true) {}
+	#endif
 }
 #endif
 

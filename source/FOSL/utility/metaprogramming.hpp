@@ -5,7 +5,7 @@
 	using expand_variadic_pack = int[];                                        \
 	(void)expand_variadic_pack{ 0, ((operation), void(), 0)... };
 
-#define OPERATION_FOR_EACH_IN_PACK(operation, accumulator_operator)            \
+#define ACCUMULATE_ALL_IN_PACK(operation, accumulator_operator)            \
 	template <typename ...value_ts>                                            \
 	constexpr auto operation##_all(value_ts... value)                          \
 	{                                                                          \
@@ -20,9 +20,9 @@ namespace FOSL
 {
 	namespace utility
 	{
-		OPERATION_FOR_EACH_IN_PACK(bitor,  |=)
-		OPERATION_FOR_EACH_IN_PACK(bitand, &=)
-		OPERATION_FOR_EACH_IN_PACK(bitxor, ^=)
+		ACCUMULATE_ALL_IN_PACK(bitor,  |=)
+		ACCUMULATE_ALL_IN_PACK(bitand, &=)
+		ACCUMULATE_ALL_IN_PACK(bitxor, ^=)
 	}
 }
 

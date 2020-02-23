@@ -19,10 +19,3 @@ target_link_libraries(
 
 	FOSL-utility
 )
-
-set_target_properties(
-	${PROJECT_NAME}.elf
-
-	PROPERTIES
-		RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/../
-)
