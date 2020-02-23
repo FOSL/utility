@@ -1,6 +1,6 @@
 .PHONY: release
 release:
-	@mkdir -p build && \
+	+@mkdir -p build && \
 	cd build && \
 	cmake $(shell python ./script/cmake_release_flags.py) .. && \
 	cmake --build . && \
@@ -8,7 +8,7 @@ release:
 
 .PHONY: debug
 debug:
-	@mkdir -p build && \
+	+@mkdir -p build && \
 	cd build && \
 	cmake $(shell python ./script/cmake_debug_flags.py) .. && \
 	cmake --build . && \
