@@ -7,4 +7,12 @@
 
 ## Description
 
-QoL generic improvements.
+QoL generic improvements related only to programming.
+
+<!-- ## Requirements -->
+
+<!-- ## Installation -->
+
+<!-- ## Usage -->
+
+<!-- ## Examples -->
