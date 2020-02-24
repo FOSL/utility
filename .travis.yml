@@ -1,12 +1,4 @@
-os:
-    - linux
-    - osx
-
-dist: bionic # trusty
-sudo: false
-
 language: cpp
-compiler: gcc
 
 addons:
     apt:
@@ -31,6 +23,7 @@ addons:
 matrix:
     include:
         - os: linux
+          dist: bionic
           sudo: false
           env: GCC_VER="7"
           compiler: gcc
@@ -43,10 +36,12 @@ matrix:
         #   env: GCC_VER="7" # CPPCHECK=1 CMAKE_OPTIONS="-D RUN_FUZZY_TESTS:BOOL=TRUE"
         #   compiler: gcc
         - os: linux
+          dist: bionic
           sudo: false
           env: GCC_VER="8" COVERAGE=1 # CPPCHECK=1 CMAKE_OPTIONS="-D RUN_FUZZY_TESTS:BOOL=TRUE"
           compiler: gcc
         - os: osx
+          dist: bionic
           compiler: gcc
           osx_image: xcode10
           env: GCC_VER="8"
@@ -60,6 +55,7 @@ matrix:
         #   env: CLANG_VER="5.0" CMAKE_OPTIONS="-D DYNLOAD_ENABLED:BOOL=FALSE -D MULTITHREAD_SUPPORT_ENABLED:BOOL=FALSE -D USE_STD_MAKE_SHARED:BOOL=TRUE" BUILD_ONLY=1
 
 before_install:
+    - cd example
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
         brew update;
         brew install cmake;
@@ -76,19 +72,23 @@ before_install:
     # - pip install --user cpp-coveralls
 
 script:
-    - cd example
     - mkdir build
     - cd build
 
-  - if [[ "${COVERAGE}" == "1" ]]; then
-        export CMAKE_OPTIONS="${CMAKE_OPTIONS} -D ENABLE_COVERAGE:BOOL=TRUE";
-    fi
+    - if [[ "${COVERAGE}" == "1" ]]; then
+          export CMAKE_OPTIONS="${CMAKE_OPTIONS} -D ENABLE_COVERAGE:BOOL=TRUE";
+      fi
 
     - cmake $(python ./../script/cmake_release_flags.py) ${CMAKE_OPTIONS} ..
     - cmake --build . -- -j2
 
-  - if [ "${BUILD_ONLY}" != "1" ]; then ctest; fi
-  - if [ "${COVERAGE}" = "1" ]; then bash <(curl -s https://raw.githubusercontent.com/codecov/codecov-bash/master/codecov) -x $GCOV -a "-s `pwd`" ; fi
+    - if [ "${BUILD_ONLY}" != "1" ]; then ctest; fi
+    - if [ "${COVERAGE}" == "1" ]; then bash <(curl -s https://raw.githubusercontent.com/codecov/codecov-bash/master/codecov) -x $GCOV -a "-s `pwd`" ; fi
+
+    - cd ..
+
+after_script:
+    # - if [ "${CPPCHECK}" == 1 ]; then ./script/runcppcheck.sh ; fi
 
 notifications:
   email:
