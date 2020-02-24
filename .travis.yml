@@ -52,7 +52,7 @@ jobs:
           arch: amd64
           compiler: clang
           osx_image: xcode10
-          env: CLANG_VER="5.0"
+          env: CLANG_VER="7"
         # - os: osx
         #   arch: amd64
         #   compiler: clang
