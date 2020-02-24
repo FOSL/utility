@@ -77,7 +77,7 @@ before_install:
     - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
           sudo apt remove cmake;
           sudo apt update -y --allow-unauthenticated;
-          sudo apt upgrade;
+          sudo apt upgrade -y --allow-unauthenticated;
           sudo apt autoremove;
           pip3 install --user cmake --upgrade;
       fi
