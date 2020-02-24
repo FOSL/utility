@@ -8,8 +8,10 @@ addons:
           # - sourceline: 'deb http://apt.llvm.org/trusty/ llvm-toolchain-trusty-5.0 main'
           #   key_url: 'https://apt.llvm.org/llvm-snapshot.gpg.key'
         packages:
-            - g++-8
             - gcc-8
+            - g++-8
+            - gcc-7
+            - g++-7
             - cmake
     # coverity_scan:
     #     project:
@@ -55,25 +57,26 @@ matrix:
 
 before_install:
     - cd example
+
+    - if [ "${GCC_VER}" != "" ]; then
+        export CXX="g++-${GCC_VER}";
+        export CC="gcc-${GCC_VER}";
+        export GCOV="gcov-${GCC_VER}";
+      fi
+    - if [ "${CLANG_VER}" != "" ]; then
+          export CXX="clang++-${CLANG_VER}";
+      fi
+
     - if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; then
         brew update;
         brew install cmake;
         brew upgrade cmake;
       fi
-    - if [ "${GCC_VER}" != "" ]; then
-        export CXX="g++-$GCC_VER";
-        export CC="gcc-$GCC_VER";
-        export GCOV="gcov-$GCC_VER";
-      fi
-    # - if [ "${CLANG_VER}" != "" ]; then
-    #       export CXX="clang++-$CLANG_VER";
-    #   fi
-    # - pip install --user cpp-coveralls
-
     - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
           apt remove cmake;
           pip install --user cmake --upgrade;
       fi
+    # - pip install --user cpp-coveralls
 
 script:
     - mkdir build
