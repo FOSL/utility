@@ -21,12 +21,12 @@ addons:
     #         name: "FOSL/utility"
     #         description: "Build submitted via Travis CI"
     #     notification_email: martin.michalec.fosl@gmail.com
-    #     build_command_prepend: "cmake $(python3.7 ./../script/cmake_release_flags.py) -D ENABLE_COVERAGE:BOOL=TRUE . "
+    #     build_command_prepend: "cmake $(python3 ./../script/cmake_release_flags.py) -D ENABLE_COVERAGE:BOOL=TRUE . "
     #     build_command:   "cmake --build . -- -j2"
     #     branch_pattern: coverity_scan
 
 python:
-    - 3.7
+    - 3
 
 jobs:
     include:
@@ -77,15 +77,15 @@ before_install:
         brew upgrade cmake;
         brew install --with-clang llvm5.0;
       fi
-    - pip3.7 install --user --upgrade pip
+    - pip3 install --user --upgrade pip
     - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
           sudo apt remove cmake;
           sudo apt update -y --allow-unauthenticated;
           sudo apt upgrade -y --allow-unauthenticated;
           sudo apt autoremove;
-          pip3.7 install --user cmake --upgrade;
+          pip3 install --user cmake --upgrade;
       fi
-    # - pip3.7 install --user cpp-coveralls
+    # - pip3 install --user cpp-coveralls
 
 script:
     - mkdir build
@@ -95,7 +95,7 @@ script:
           export CMAKE_OPTIONS="${CMAKE_OPTIONS} -D ENABLE_COVERAGE:BOOL=TRUE";
       fi
 
-    - cmake $(python3.7 ./../script/cmake_release_flags.py) ${CMAKE_OPTIONS} ..
+    - cmake $(python3 ./../script/cmake_release_flags.py) ${CMAKE_OPTIONS} ..
     - cmake --build . -- -j2
 
     - if [ "${BUILD_ONLY}" != "1" ]; then ctest; fi
