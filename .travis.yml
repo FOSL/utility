@@ -1,5 +1,7 @@
 language: cpp
 
+
+
 addons:
     apt:
         sources:
@@ -14,8 +16,9 @@ addons:
             - gcc-7
             - g++-7
             - cmake
-            - python3.7
-            - python3.7-pip
+            - clang-5.0
+            - python3
+            - python3-pip
     # coverity_scan:
     #     project:
     #         name: "FOSL/utility"
@@ -24,6 +27,9 @@ addons:
     #     build_command_prepend: "cmake $(python3.7 ./../script/cmake_release_flags.py) -D ENABLE_COVERAGE:BOOL=TRUE . "
     #     build_command:   "cmake --build . -- -j2"
     #     branch_pattern: coverity_scan
+
+python:
+    - 3.7
 
 jobs:
     include:
@@ -49,7 +55,7 @@ jobs:
           arch: amd64
           compiler: clang
           osx_image: xcode10
-          env: CLANG_VER="10.0"
+          env: CLANG_VER="5.0"
         # - os: osx
         #   arch: amd64
         #   compiler: clang
