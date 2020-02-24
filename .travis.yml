@@ -1,7 +1,5 @@
 language: cpp
 
-
-
 addons:
     apt:
         sources:
@@ -16,7 +14,6 @@ addons:
             - gcc-7
             - g++-7
             - cmake
-            - clang-5.0
             - python3
             - python3-pip
     # coverity_scan:
@@ -78,6 +75,7 @@ before_install:
         brew update;
         brew install cmake;
         brew upgrade cmake;
+        brew install --with-clang llvm5.0
       fi
     - pip3.7 install --user --upgrade pip
     - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
