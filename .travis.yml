@@ -4,15 +4,19 @@ addons:
     apt:
         sources:
             - ubuntu-toolchain-r-test
-          # - llvm-toolchain-trusty-5.0
-          # - sourceline: 'deb http://apt.llvm.org/trusty/ llvm-toolchain-trusty-5.0 main'
-          #   key_url: 'https://apt.llvm.org/llvm-snapshot.gpg.key'
+          - llvm-toolchain-trusty-5.0
+          - sourceline: 'deb http://apt.llvm.org/trusty/ llvm-toolchain-trusty-5.0 main'
+            key_url: 'https://apt.llvm.org/llvm-snapshot.gpg.key'
         packages:
+            - bash
             - gcc-8
             - g++-8
             - gcc-7
             - g++-7
             - cmake
+            - ctest
+            - python
+            - python-pip
     # coverity_scan:
     #     project:
     #         name: "FOSL/utility"
@@ -25,7 +29,7 @@ addons:
 matrix:
     include:
         - os: linux
-          dist: xenial
+          dist: trusty
           sudo: false
           env: GCC_VER="7"
           compiler: gcc
@@ -38,7 +42,7 @@ matrix:
         #   env: GCC_VER="7" # CPPCHECK=1 CMAKE_OPTIONS="-D RUN_FUZZY_TESTS:BOOL=TRUE"
         #   compiler: gcc
         - os: linux
-          dist: xenial
+          dist: trusty
           sudo: false
           env: GCC_VER="8" COVERAGE=1 # CPPCHECK=1 CMAKE_OPTIONS="-D RUN_FUZZY_TESTS:BOOL=TRUE"
           compiler: gcc
