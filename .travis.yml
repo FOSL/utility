@@ -21,6 +21,7 @@ before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
       brew update;
       brew install cmake;
+      brew upgrade cmake;
     fi
 
 script:
@@ -43,7 +44,11 @@ script:
     - g++ -v
     - cmake --version
 
-    - cmake $(python ./../script/cmake_release_flags.py) -D ENABLE_COVERAGE:BOOL=TRUE ..
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+        export COVERAGE_FLAGS='-D ENABLE_COVERAGE:BOOL=TRUE';
+    fi
+
+    - cmake $(python ./../script/cmake_release_flags.py) $COVERAGE_FLAGS ..
     - cmake --build . -- -j2
 
     - ctest -j2
