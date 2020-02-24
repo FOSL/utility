@@ -75,7 +75,7 @@ before_install:
         brew update;
         brew install cmake;
         brew upgrade cmake;
-        brew install --with-clang llvm5.0;
+        brew install llvm5.0;
       fi
     - pip3 install --user --upgrade pip
     - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
@@ -83,7 +83,7 @@ before_install:
           sudo apt update -y --allow-unauthenticated;
           sudo apt upgrade -y --allow-unauthenticated;
           sudo apt autoremove;
-          pip3 install --user cmake --upgrade;
+          pip3 install --user cmake;
       fi
     # - pip3 install --user cpp-coveralls
 
