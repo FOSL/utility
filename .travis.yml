@@ -1,6 +1,7 @@
 dist: trusty
 sudo: false
 language: cpp
+compiler: gcc
 
 addons:
     apt:
@@ -8,12 +9,17 @@ addons:
             - ubuntu-toolchain-r-test
         packages:
             - g++-8
+            - gcc-8
+            - cmake
 
 script:
     - cd example
     - mkdir build
     - cd build
     - CXX=/usr/bin/g++-8 CC=/usr/bin/gcc-8
+    - ln -s $CXX /usr/bin/g++
+    - ln -s $CC /usr/bin/gcc
+    - gcc -v && g++ -v && cmake --version
     - cmake $(python ./../script/cmake_release_flags.py) -D ENABLE_COVERAGE:BOOL=TRUE ..
     - cmake --build . -- -j2
     - ctest -j2
