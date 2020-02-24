@@ -75,7 +75,7 @@ before_install:
         brew update;
         brew install cmake;
         brew upgrade cmake;
-        brew install --with-clang llvm5.0
+        brew install --with-clang llvm5.0;
       fi
     - pip3.7 install --user --upgrade pip
     - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
