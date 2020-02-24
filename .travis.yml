@@ -1,5 +1,9 @@
 language: cpp
 
+os:
+    - linux
+    - osx
+
 addons:
     apt:
         sources:
@@ -26,34 +30,26 @@ addons:
     #     build_command:   "cmake --build . -- -j2"
     #     branch_pattern: coverity_scan
 
-matrix:
+jobs:
     include:
         - os: linux
           dist: trusty
-          sudo: false
           env: GCC_VER="7"
           compiler: gcc
         # - os: linux
-        #   sudo: false
         #   env: GCC_VER="6" CMAKE_OPTIONS="-D DYNLOAD_ENABLED:BOOL=FALSE -D MULTITHREAD_SUPPORT_ENABLED:BOOL=FALSE -D USE_STD_MAKE_SHARED:BOOL=TRUE" BUILD_ONLY=1
         #   compiler: gcc
         # - os: linux
-        #   sudo: false
         #   env: GCC_VER="7" # CPPCHECK=1 CMAKE_OPTIONS="-D RUN_FUZZY_TESTS:BOOL=TRUE"
         #   compiler: gcc
         - os: linux
           dist: trusty
-          sudo: false
           env: GCC_VER="8" COVERAGE=1 # CPPCHECK=1 CMAKE_OPTIONS="-D RUN_FUZZY_TESTS:BOOL=TRUE"
           compiler: gcc
         - os: osx
           compiler: clang
           osx_image: xcode10
           env: CLANG_VER="5.0"
-        # - os: osx
-        #   compiler: clang
-        #   osx_image: xcode10
-        #   env: CLANG_VER="5.0"
         # - os: osx
         #   compiler: clang
         #   osx_image: xcode10
