@@ -2,7 +2,7 @@ os:
     - linux
     - osx
 
-dist: trusty
+dist: bionic # trusty
 sudo: false
 
 language: cpp
@@ -40,8 +40,8 @@ script:
     - ln -s $CXX /usr/bin/g++
     - ln -s $CC /usr/bin/gcc
 
-    - gcc -v
-    - g++ -v
+    - $CXX -v
+    - $CC -v
     - cmake --version
 
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
