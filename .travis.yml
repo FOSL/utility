@@ -8,9 +8,9 @@ addons:
     apt:
         sources:
             - ubuntu-toolchain-r-test
-          - llvm-toolchain-trusty-5.0
-          - sourceline: 'deb http://apt.llvm.org/trusty/ llvm-toolchain-trusty-5.0 main'
-            key_url: 'https://apt.llvm.org/llvm-snapshot.gpg.key'
+            - llvm-toolchain-trusty-5.0
+            - sourceline: 'deb http://apt.llvm.org/trusty/ llvm-toolchain-trusty-5.0 main'
+              key_url: 'https://apt.llvm.org/llvm-snapshot.gpg.key'
         packages:
             - bash
             - gcc-8
@@ -33,24 +33,30 @@ addons:
 jobs:
     include:
         - os: linux
+          arch: amd64
           dist: trusty
           env: GCC_VER="7"
           compiler: gcc
         # - os: linux
+        #   arch: amd64
         #   env: GCC_VER="6" CMAKE_OPTIONS="-D DYNLOAD_ENABLED:BOOL=FALSE -D MULTITHREAD_SUPPORT_ENABLED:BOOL=FALSE -D USE_STD_MAKE_SHARED:BOOL=TRUE" BUILD_ONLY=1
         #   compiler: gcc
         # - os: linux
+        #   arch: amd64
         #   env: GCC_VER="7" # CPPCHECK=1 CMAKE_OPTIONS="-D RUN_FUZZY_TESTS:BOOL=TRUE"
         #   compiler: gcc
         - os: linux
+          arch: amd64
           dist: trusty
           env: GCC_VER="8" COVERAGE=1 # CPPCHECK=1 CMAKE_OPTIONS="-D RUN_FUZZY_TESTS:BOOL=TRUE"
           compiler: gcc
         - os: osx
+          arch: amd64
           compiler: clang
           osx_image: xcode10
           env: CLANG_VER="5.0"
         # - os: osx
+        #   arch: amd64
         #   compiler: clang
         #   osx_image: xcode10
         #   env: CLANG_VER="5.0" CMAKE_OPTIONS="-D DYNLOAD_ENABLED:BOOL=FALSE -D MULTITHREAD_SUPPORT_ENABLED:BOOL=FALSE -D USE_STD_MAKE_SHARED:BOOL=TRUE" BUILD_ONLY=1
