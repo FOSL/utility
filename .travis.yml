@@ -94,7 +94,7 @@ script:
 
     - cd ..
 
-after_script:
+# after_script:
     # - if [ "${CPPCHECK}" == 1 ]; then ./script/runcppcheck.sh ; fi
 
 notifications:
