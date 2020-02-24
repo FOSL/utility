@@ -4,8 +4,8 @@ addons:
     apt:
         sources:
             - ubuntu-toolchain-r-test
-            - llvm-toolchain-trusty-5.0
-            - sourceline: 'deb http://apt.llvm.org/trusty/ llvm-toolchain-trusty-5.0 main'
+            - llvm-toolchain-xenial-5.0
+            - sourceline: 'deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-5.0 main'
               key_url: 'https://apt.llvm.org/llvm-snapshot.gpg.key'
         packages:
             - bash
@@ -32,7 +32,7 @@ jobs:
     include:
         - os: linux
           arch: amd64
-          dist: trusty
+          dist: xenial
           env: GCC_VER="7"
           compiler: gcc
         # - os: linux
@@ -45,7 +45,7 @@ jobs:
         #   compiler: gcc
         - os: linux
           arch: amd64
-          dist: trusty
+          dist: xenial
           env: GCC_VER="8" COVERAGE=1 # CPPCHECK=1 CMAKE_OPTIONS="-D RUN_FUZZY_TESTS:BOOL=TRUE"
           compiler: gcc
         - os: osx
@@ -75,7 +75,7 @@ before_install:
         brew update;
         brew install cmake;
         brew upgrade cmake;
-        brew install llvm5.0;
+        brew install llvm;
       fi
     - pip3 install --user --upgrade pip
     - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
