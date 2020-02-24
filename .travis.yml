@@ -14,14 +14,14 @@ addons:
             - gcc-7
             - g++-7
             - cmake
-            - python
-            - python-pip
+            - python3
+            - python3-pip
     # coverity_scan:
     #     project:
     #         name: "FOSL/utility"
     #         description: "Build submitted via Travis CI"
     #     notification_email: martin.michalec.fosl@gmail.com
-    #     build_command_prepend: "cmake $(python ./../script/cmake_release_flags.py) -D ENABLE_COVERAGE:BOOL=TRUE . "
+    #     build_command_prepend: "cmake $(python3 ./../script/cmake_release_flags.py) -D ENABLE_COVERAGE:BOOL=TRUE . "
     #     build_command:   "cmake --build . -- -j2"
     #     branch_pattern: coverity_scan
 
@@ -73,11 +73,12 @@ before_install:
         brew install cmake;
         brew upgrade cmake;
       fi
+    - pip3 install --user --upgrade pip3
     - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
-          apt remove cmake;
-          pip install --user cmake --upgrade;
+          sudo apt remove cmake;
+          pip3 install --user cmake --upgrade;
       fi
-    # - pip install --user cpp-coveralls
+    # - pip3 install --user cpp-coveralls
 
 script:
     - mkdir build
@@ -87,7 +88,7 @@ script:
           export CMAKE_OPTIONS="${CMAKE_OPTIONS} -D ENABLE_COVERAGE:BOOL=TRUE";
       fi
 
-    - cmake $(python ./../script/cmake_release_flags.py) ${CMAKE_OPTIONS} ..
+    - cmake $(python3 ./../script/cmake_release_flags.py) ${CMAKE_OPTIONS} ..
     - cmake --build . -- -j2
 
     - if [ "${BUILD_ONLY}" != "1" ]; then ctest; fi
