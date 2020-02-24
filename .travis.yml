@@ -1,5 +1,10 @@
+os:
+    - linux
+    - osx
+
 dist: trusty
 sudo: false
+
 language: cpp
 compiler: gcc
 
@@ -12,15 +17,35 @@ addons:
             - gcc-8
             - cmake
 
+before_install:
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+      brew update;
+      brew install cmake;
+    fi
+
+script:
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+      export CC=gcc-7;
+      export CXX=g++-7;
+    fi
+
 script:
     - cd example
     - mkdir build
     - cd build
-    - CXX=/usr/bin/g++-8 CC=/usr/bin/gcc-8
+
+    - export CXX=/usr/bin/g++-8
+    - export CC=/usr/bin/gcc-8
     - ln -s $CXX /usr/bin/g++
     - ln -s $CC /usr/bin/gcc
-    - gcc -v && g++ -v && cmake --version
+
+    - gcc -v
+    - g++ -v
+    - cmake --version
+
     - cmake $(python ./../script/cmake_release_flags.py) -D ENABLE_COVERAGE:BOOL=TRUE ..
     - cmake --build . -- -j2
+
     - ctest -j2
+
     - bash <(curl -s https://codecov.io/bash)
