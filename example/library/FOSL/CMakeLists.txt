@@ -1,5 +1,1 @@
-if(UNIX)
-	add_subdirectory(utility)
-else()
-	add_subdirectory(../../../../utility ${CMAKE_BINARY_DIR}/library/FOSL/utility)
-endif()
+add_subdirectory(../../../../utility ${CMAKE_BINARY_DIR}/library/FOSL/utility)

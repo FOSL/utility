@@ -18,8 +18,6 @@
 
 #include "FOSL/utility/types.h"
 #include "FOSL/utility/assert.h"
-#include "FOSL/utility/metaprogramming.hpp"
-#include "FOSL/utility/bits.hpp"
 #include "FOSL/utility/math.hpp"
 
 #define loop for (;;)
