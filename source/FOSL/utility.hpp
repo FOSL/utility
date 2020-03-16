@@ -22,15 +22,10 @@
 #include "FOSL/utility/bits.hpp"
 #include "FOSL/utility/math.hpp"
 
-namespace FOSL
+#define loop for (;;)
+
+namespace FOSL::utility
 {
-	namespace utility
-	{
-		constexpr u8 BIN =  2;
-		constexpr u8 OCT =  8;
-		constexpr u8 DEC = 10;
-		constexpr u8 HEX = 16;
-	}
 }
 
 #endif

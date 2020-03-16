@@ -62,8 +62,9 @@ namespace FOSL::utility::math
 		float output_max
 	)-> float
 	{
-		return (value - input_min) *
-		       (output_max - output_min) / (input_max - input_min) +
+		return (value      -  input_min) *
+		       (output_max - output_min) /
+			   ( input_max -  input_min) +
 			   (output_min);
 	}
 
