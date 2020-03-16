@@ -23,4 +23,7 @@ using  word = u16;
 using dword = u32;
 using qword = u64;
 
+template <typename type>
+using owner = type;
+
 #endif
