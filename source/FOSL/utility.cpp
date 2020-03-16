@@ -1,8 +1,5 @@
 #include "FOSL/utility.hpp"
 
-namespace FOSL
+namespace FOSL::utility
 {
-	namespace utility
-	{
-	}
 }

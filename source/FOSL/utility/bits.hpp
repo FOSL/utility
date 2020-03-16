@@ -19,21 +19,6 @@ namespace FOSL
 
 		template <typename ...index_ts>
 		constexpr auto BITS(index_ts... index) { return bitor_all(BIT(index)...); }
-
-		constexpr bool ON  = true;
-		constexpr bool OFF = false;
-
-		constexpr bool ENABLE  = true;
-		constexpr bool DISABLE = false;
-
-		constexpr bool OK     = true;
-		constexpr bool FAILED = false;
-
-		constexpr bool HIGH = true;
-		constexpr bool LOW  = false;
-
-		constexpr bool ACK  = true;
-		constexpr bool NACK = false;
 	}
 }
 

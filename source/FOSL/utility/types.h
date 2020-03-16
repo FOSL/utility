@@ -16,4 +16,9 @@ using r32 = float;
 using f64 = double;
 using r64 = double;
 
+using  byte =  u8;
+using  word = u16;
+using dword = u32;
+using qword = u64;
+
 #endif
