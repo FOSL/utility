@@ -1,6 +1,8 @@
 #ifndef _FOSL_UTILITY_TYPES_H_
 #define _FOSL_UTILITY_TYPES_H_
 
+#include <inttypes.h>
+
 using  s8  = int8_t;
 using s16 = int16_t;
 using s32 = int32_t;

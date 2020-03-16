@@ -103,7 +103,7 @@ script:
     - cd ..
 
 # after_script:
-    # - if [ "${CPPCHECK}" == 1 ]; then ./script/runcppcheck.sh ; fi
+    # - if [ "${CPPCHECK}" == 1 ]; then ./script/runcppcheck.sh; fi
 
 notifications:
   email:
