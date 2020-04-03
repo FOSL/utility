@@ -24,6 +24,7 @@
 
 namespace FOSL::utility
 {
+	extern void test_function(void);
 }
 
 #endif

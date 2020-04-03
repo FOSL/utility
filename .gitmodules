@@ -1,0 +1,3 @@
+[submodule "cmake/module/CMake_deployment"]
+	path = cmake/module/CMake_deployment
+	url = https://github.com/FOSL/CMake_deployment.git

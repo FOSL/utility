@@ -14,8 +14,13 @@ target_include_directories(
 	${PROJECT_SOURCE_DIR}
 )
 
+find_package(FOSL
+	COMPONENTS utility
+	REQUIRED
+)
+
 target_link_libraries(
 	${PROJECT_NAME}.elf
 
-	FOSL-utility
+	FOSL::utility
 )

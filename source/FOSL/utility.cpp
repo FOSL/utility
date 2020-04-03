@@ -2,4 +2,7 @@
 
 namespace FOSL::utility
 {
+	void test_function(void)
+	{
+	}
 }

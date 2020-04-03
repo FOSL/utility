@@ -2,6 +2,14 @@ cmake_minimum_required(VERSION 3.13)
 
 project(example)
 
+set(CMAKE_PREFIX_PATH "/lib/cmake")
+set(as_subproject FOSL::utility)
+macro(find_package)
+	if(NOT ${ARG0} IN_LIST as_subproject)
+		_find_package(${ARGV})
+	endif()
+endmacro()
+
 set(CMAKE_BINARY_DIR ${CMAKE_SOURCE_DIR}/build)
 
 set(CMAKE_CXX_STANDARD 17)
